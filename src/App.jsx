@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 
 export default function App() {
 
@@ -6,6 +6,7 @@ export default function App() {
     const saved = localStorage.getItem('list');
     return saved ? JSON.parse(saved) : [];
   })
+  const selectionRef = useRef('')
 
   useEffect(() => {
     localStorage.setItem('list', JSON.stringify(list));
@@ -25,6 +26,12 @@ export default function App() {
           <p className="text-sm text-slate-500 font-medium text-center mb-1">Budget Residuo</p>
         </div>
       </div>
+      <form className="my-10">
+        <p className="text-md font-medium text-slate-700 mb-1">Inserisci un'operazione</p>
+        <div className="bg-slate-100 p-6 rounded-3xl flex gap-4">
+
+        </div>
+      </form>
     </div>
   )
 }
