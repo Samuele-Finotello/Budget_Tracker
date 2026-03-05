@@ -29,7 +29,13 @@ export default function App() {
       <form className="my-10">
         <p className="text-md font-medium text-slate-700 mb-1">Inserisci un'operazione</p>
         <div className="bg-slate-100 p-6 rounded-3xl flex gap-4">
-
+          <div>
+            <label className="block text-sm font-medium text-slate-700 mb-1">Movimento</label>
+            <select name="selection" ref={selectionRef} className="bg-slate-900 text-white px-6 py-2 rounded-xl font-bold">
+              <option value={'entrata'}>Entrata</option>
+              <option value={'uscita'}>Uscita</option>
+            </select>
+          </div>
         </div>
       </form>
     </div>
