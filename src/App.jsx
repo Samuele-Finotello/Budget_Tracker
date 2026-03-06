@@ -7,6 +7,7 @@ export default function App() {
     return saved ? JSON.parse(saved) : [];
   })
   const selectionRef = useRef('')
+  const descriptionRef = useRef('')
 
   useEffect(() => {
     localStorage.setItem('list', JSON.stringify(list));
@@ -35,6 +36,10 @@ export default function App() {
               <option value={'entrata'}>Entrata</option>
               <option value={'uscita'}>Uscita</option>
             </select>
+          </div>
+          <div className="flex-1">
+            <label className="block text-sm font-medium text-slate-700 mb-1">Descrizione</label>
+            <input type="text" name="description" ref={descriptionRef} className="w-full p-2 rounded-xl border-none ring-1 ring-slate-300 focus:ring-2 focus:ring-blue-500" placeholder="Es. Affitto" />
           </div>
         </div>
       </form>
