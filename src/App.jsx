@@ -14,6 +14,22 @@ export default function App() {
     localStorage.setItem('list', JSON.stringify(list));
   }, [list])
 
+  const addOperation = (e) => {
+    e.preventDefault()
+
+    if (descriptionRef.current.value === '') {
+      alert('Descrizione non valida')
+      return
+    }
+
+    const amount = parseFloat(importRef.current.value);
+
+    if (isNaN(amount) || amount === 0) {
+      alert('Importo non valido')
+      return
+    }
+  }
+
   return (
     <div className="max-w-6xl mx-auto my-10">
       <h1 className="text-4xl font-bold text-slate-900 text-center my-10">Budget Tracker</h1>
@@ -28,7 +44,7 @@ export default function App() {
           <p className="text-sm text-slate-500 font-medium text-center mb-1">Budget Residuo</p>
         </div>
       </div>
-      <form className="my-10">
+      <form onSubmit={addOperation} className="my-10">
         <p className="text-md font-medium text-slate-700 mb-1">Inserisci un'operazione</p>
         <div className="bg-slate-100 p-6 rounded-3xl flex gap-4 items-end">
           <div>
