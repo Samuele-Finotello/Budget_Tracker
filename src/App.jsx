@@ -18,16 +18,28 @@ export default function App() {
     e.preventDefault()
 
     if (descriptionRef.current.value === '') {
-      alert('Descrizione non valida')
-      return
+      return alert('Descrizione non valida');
     }
 
     const amount = parseFloat(importRef.current.value);
 
     if (isNaN(amount) || amount === 0) {
-      alert('Importo non valido')
-      return
+      return alert('Importo non valido');
     }
+
+    const newOperation = {
+      id: Date.now(),
+      date: new Date().toISOString(),
+      description: descriptionRef.current.value,
+      import: selectionRef.current.value === 'uscita' && amount > 0 ? -amount : amount
+    }
+    console.log(newOperation)
+    setList([newOperation, ...list]);
+    alert('Operazione registrata');
+
+    descriptionRef.current.value = '';
+    importRef.current.value = '';
+    selectionRef.current.value = 'entrata';
   }
 
   return (
