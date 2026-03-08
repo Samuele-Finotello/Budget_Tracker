@@ -32,6 +32,9 @@ export default function App() {
       return acc;
     }, 0)
 
+  // Calcolo importo rimasto
+  const remainingBudget = totalBudget + totalSpent;
+
   const addOperation = (e) => {
     e.preventDefault()
 
@@ -74,6 +77,7 @@ export default function App() {
         </div>
         <div className="border-2 border-gray-200 rounded-3xl p-4 shadow-sm w-72">
           <p className="text-sm text-slate-500 font-medium text-center mb-1">Budget Residuo</p>
+          <p className="text-2xl font-bold text-yellow-500 text-center">€ {remainingBudget}</p>
         </div>
       </div>
       <form onSubmit={addOperation} className="my-10">
