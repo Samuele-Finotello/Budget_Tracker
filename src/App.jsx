@@ -35,6 +35,14 @@ export default function App() {
   // Calcolo importo rimasto
   const remainingBudget = totalBudget + totalSpent;
 
+  function formattedBudget(budget) {
+    const formatted = budget.toLocaleString('it-IT', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    })
+    return `€ ${formatted}`
+  }
+
   const addOperation = (e) => {
     e.preventDefault()
 
@@ -69,15 +77,15 @@ export default function App() {
       <div className="flex justify-around items-center">
         <div className="border-2 border-gray-200 rounded-3xl p-4 shadow-sm w-72">
           <p className="text-sm text-slate-500 font-medium text-center mb-1">Budget Totale</p>
-          <p className="text-2xl font-bold text-green-500 text-center">€ {totalBudget}</p>
+          <p className="text-2xl font-bold text-green-500 text-center">{formattedBudget(totalBudget)}</p>
         </div>
         <div className="border-2 border-gray-200 rounded-3xl p-4 shadow-sm w-72">
           <p className="text-sm text-slate-500 font-medium text-center mb-1">Budget Speso</p>
-          <p className="text-2xl font-bold text-red-500 text-center">€ {totalSpent}</p>
+          <p className="text-2xl font-bold text-red-500 text-center">{formattedBudget(totalSpent)}</p>
         </div>
         <div className="border-2 border-gray-200 rounded-3xl p-4 shadow-sm w-72">
           <p className="text-sm text-slate-500 font-medium text-center mb-1">Budget Residuo</p>
-          <p className="text-2xl font-bold text-yellow-500 text-center">€ {remainingBudget}</p>
+          <p className="text-2xl font-bold text-yellow-500 text-center">{formattedBudget(remainingBudget)}</p>
         </div>
       </div>
       <form onSubmit={addOperation} className="my-10">
@@ -92,7 +100,7 @@ export default function App() {
           </div>
           <div className="flex-1">
             <label className="block text-sm font-medium text-slate-700 mb-1">Descrizione</label>
-            <input type="text" name="description" ref={descriptionRef} className="w-full p-2 rounded-xl border-none ring-1 ring-slate-300 focus:ring-2 focus:ring-blue-500" placeholder="Es. Affitto" />
+            <input type="text" name="description" ref={descriptionRef} className="w-full p-2 rounded-xl border-none ring-1 ring-slate-300 focus:ring-2 focus:ring-blue-500 outline-none" placeholder="Es. Affitto" />
           </div>
           <div className="w-40">
             <label className="block text-sm font-medium text-slate-700 mb-1">Importo (€)</label>
