@@ -14,9 +14,19 @@ export default function App() {
     localStorage.setItem('list', JSON.stringify(list));
   }, [list])
 
+  // Calcolo importo budget
   const totalBudget =
     list.reduce((acc, curr) => {
       if (curr.import > 0) {
+        return acc + curr.import;
+      }
+      return acc;
+    }, 0)
+
+  // Calcolo importo spese
+  const totalSpent =
+    list.reduce((acc, curr) => {
+      if (curr.import < 0) {
         return acc + curr.import;
       }
       return acc;
@@ -60,6 +70,7 @@ export default function App() {
         </div>
         <div className="border-2 border-gray-200 rounded-3xl p-4 shadow-sm w-72">
           <p className="text-sm text-slate-500 font-medium text-center mb-1">Budget Speso</p>
+          <p className="text-2xl font-bold text-red-500 text-center">€ {totalSpent}</p>
         </div>
         <div className="border-2 border-gray-200 rounded-3xl p-4 shadow-sm w-72">
           <p className="text-sm text-slate-500 font-medium text-center mb-1">Budget Residuo</p>
