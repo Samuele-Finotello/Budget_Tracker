@@ -14,6 +14,14 @@ export default function App() {
     localStorage.setItem('list', JSON.stringify(list));
   }, [list])
 
+  const totalBudget =
+    list.reduce((acc, curr) => {
+      if (curr.import > 0) {
+        return acc + curr.import;
+      }
+      return acc;
+    }, 0)
+
   const addOperation = (e) => {
     e.preventDefault()
 
@@ -48,6 +56,7 @@ export default function App() {
       <div className="flex justify-around items-center">
         <div className="border-2 border-gray-200 rounded-3xl p-4 shadow-sm w-72">
           <p className="text-sm text-slate-500 font-medium text-center mb-1">Budget Totale</p>
+          <p className="text-2xl font-bold text-green-500 text-center">€ {totalBudget}</p>
         </div>
         <div className="border-2 border-gray-200 rounded-3xl p-4 shadow-sm w-72">
           <p className="text-sm text-slate-500 font-medium text-center mb-1">Budget Speso</p>
