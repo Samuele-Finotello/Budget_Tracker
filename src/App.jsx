@@ -133,7 +133,13 @@ export default function App() {
                       </div>
                     </div>
                     <div>
-                      <p className="text-md text-slate-500 font-medium">{operation.description}</p>
+                      <p className="text-md text-slate-500 font-medium">{operation.description} - <span className="text-sm">{new Date(operation.date).toLocaleString('it-IT', {
+                        day: '2-digit',
+                        month: '2-digit',
+                        year: '2-digit',
+                        hour: '2-digit',
+                        minute: '2-digit'
+                      })}</span></p>
                       <p className="text-2xl font-bold text-slate-900">{formattedBudget(operation.import)}</p>
                     </div>
                   </div>
