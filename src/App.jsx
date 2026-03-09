@@ -111,6 +111,13 @@ export default function App() {
           </button>
         </div>
       </form>
+      <p className="text-2xl font-bold text-slate-900">Operazioni:</p>
+      {list.length === 0 ?
+        <p className="text-2xl font-bold text-slate-900 text-center mt-18">📭 Nessuna operazione trovata. Inizia aggiungendone una sopra!</p> :
+        <div className="my-5">
+
+        </div>
+      }
     </div>
   )
 }
