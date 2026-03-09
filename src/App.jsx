@@ -9,6 +9,8 @@ export default function App() {
   const selectionRef = useRef('')
   const descriptionRef = useRef('')
   const importRef = useRef('')
+  const [message, setMessage] = useState('')
+  const [modal, setModal] = useState(false)
 
   useEffect(() => {
     localStorage.setItem('list', JSON.stringify(list));
@@ -35,6 +37,12 @@ export default function App() {
   // Calcolo importo rimasto
   const remainingBudget = totalBudget + totalSpent;
 
+  const showMessage = (msg) => {
+    setModal(true)
+    setMessage(msg)
+    setTimeout(() => setModal(false), 3000)
+  }
+
   function formattedBudget(budget) {
     const formatted = budget.toLocaleString('it-IT', {
       minimumFractionDigits: 2,
@@ -47,13 +55,13 @@ export default function App() {
     e.preventDefault()
 
     if (descriptionRef.current.value === '') {
-      return alert('Descrizione non valida');
+      return showMessage('Descrizione non valida');
     }
 
     const amount = parseFloat(importRef.current.value);
 
     if (isNaN(amount) || amount === 0) {
-      return alert('Importo non valido');
+      return showMessage('Importo non valido');
     }
 
     const newOperation = {
@@ -64,7 +72,7 @@ export default function App() {
     }
     console.log(newOperation)
     setList([newOperation, ...list]);
-    alert('Operazione registrata');
+    showMessage('Operazione registrata');
 
     descriptionRef.current.value = '';
     importRef.current.value = '';
