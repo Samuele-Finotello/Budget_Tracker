@@ -143,6 +143,9 @@ export default function App() {
                       <p className="text-2xl font-bold text-slate-900">{formattedBudget(operation.import)}</p>
                     </div>
                   </div>
+                  <div className="p-2 rounded-2xl">
+                    <button className="cursor-pointer">❌</button>
+                  </div>
                 </div>
               </div>
             )
