@@ -79,6 +79,12 @@ export default function App() {
     selectionRef.current.value = 'entrata';
   }
 
+  const deleteOperation = (id) => {
+    const newList = list.filter(operation => operation.id !== id)
+    setList(newList)
+    showMessage('Operazione eliminata con successo')
+  }
+
   return (
     <div className="max-w-6xl mx-auto my-10">
       <h1 className="text-4xl font-bold text-slate-900 text-center my-10">Budget Tracker</h1>
