@@ -158,7 +158,7 @@ export default function App() {
                     </div>
                   </div>
                   <div className="p-2 rounded-2xl">
-                    <button className="cursor-pointer">❌</button>
+                    <button className="cursor-pointer" onClick={() => deleteOperation(operation.id)}>❌</button>
                   </div>
                 </div>
               </div>
