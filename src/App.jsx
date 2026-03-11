@@ -134,6 +134,7 @@ export default function App() {
       {list.length === 0 ?
         <p className="text-2xl font-bold text-slate-900 text-center mt-18">📭 Nessuna operazione trovata. Inizia aggiungendone una sopra!</p> :
         <div className="my-5">
+          <button onClick={() => deleteAllOperations()} className="bg-red-800 text-white px-6 py-2 rounded-xl font-bold mb-5">Elimina tutte le operazioni</button>
           {list.map(operation => {
             return (
               <div key={operation.id}>
