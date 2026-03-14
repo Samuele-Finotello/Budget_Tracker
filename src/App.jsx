@@ -81,9 +81,10 @@ export default function App() {
     selectionRef.current.value = 'entrata';
   }
 
-  const deleteOperation = (id) => {
+  const confirmDelete = (id) => {
     const newList = list.filter(operation => operation.id !== id)
     setList(newList)
+    setModalConfirmOperation(false)
     showMessage('Operazione eliminata con successo')
   }
 
