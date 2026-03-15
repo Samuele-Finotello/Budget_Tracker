@@ -89,8 +89,9 @@ export default function App() {
     showMessage('Operazione eliminata con successo')
   }
 
-  const deleteAllOperations = () => {
+  const confirmDeleteAll = () => {
     setList([])
+    setModalConfirmAll(false)
     showMessage('Operazioni eliminate con successo')
   }
 
