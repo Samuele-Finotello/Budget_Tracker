@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react"
+import { formattedBudget } from "./utils/formattedBudget";
 
 export default function App() {
 
@@ -44,14 +45,6 @@ export default function App() {
     setModal(true)
     setMessage(msg)
     setTimeout(() => setModal(false), 3000)
-  }
-
-  function formattedBudget(budget) {
-    const formatted = budget.toLocaleString('it-IT', {
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
-    })
-    return `€ ${formatted}`
   }
 
   const addOperation = (e) => {
