@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react"
 import { formattedBudget } from "./utils/formattedBudget";
+import FormCard from "./components/FormCard";
 
 export default function App() {
 
@@ -66,7 +67,6 @@ export default function App() {
       description: descriptionRef.current.value,
       import: selectionRef.current.value === 'uscita' && amount > 0 ? -amount : amount
     }
-    console.log(newOperation)
     setList([newOperation, ...list]);
     showMessage('Operazione registrata');
 
@@ -105,29 +105,12 @@ export default function App() {
           <p className="text-2xl font-bold text-yellow-500 text-center">{formattedBudget(remainingBudget)}</p>
         </div>
       </div>
-      <form onSubmit={addOperation} className="my-10">
-        <p className="text-md font-medium text-slate-700 mb-1">Inserisci un'operazione</p>
-        <div className="bg-slate-100 p-6 rounded-3xl flex gap-4 items-end">
-          <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">Movimento</label>
-            <select name="selection" ref={selectionRef} className="bg-slate-900 text-white px-6 py-2 rounded-xl font-bold">
-              <option value={'entrata'}>Entrata</option>
-              <option value={'uscita'}>Uscita</option>
-            </select>
-          </div>
-          <div className="flex-1">
-            <label className="block text-sm font-medium text-slate-700 mb-1">Descrizione</label>
-            <input type="text" name="description" ref={descriptionRef} className="w-full p-2 rounded-xl border-none ring-1 ring-slate-300 focus:ring-2 focus:ring-blue-500 outline-none" placeholder="Es. Affitto" />
-          </div>
-          <div className="w-40">
-            <label className="block text-sm font-medium text-slate-700 mb-1">Importo (€)</label>
-            <input type="number" name="import" step={0.01} ref={importRef} className="w-full p-2 rounded-xl border-none ring-1 ring-slate-300 focus:ring-2 focus:ring-blue-500 outline-none" />
-          </div>
-          <button type="submit" className="bg-slate-900 text-white px-6 py-2 rounded-xl font-bold">
-            Aggiungi
-          </button>
-        </div>
-      </form>
+      <FormCard
+        addOperation={addOperation}
+        selectionRef={selectionRef}
+        descriptionRef={descriptionRef}
+        importRef={importRef}
+      />
       <p className="text-2xl font-bold text-slate-900">Operazioni:</p>
       {list.length === 0 ?
         <p className="text-2xl font-bold text-slate-900 text-center mt-18">📭 Nessuna operazione trovata. Inizia aggiungendone una sopra!</p> :
