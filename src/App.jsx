@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react"
 import { formattedBudget } from "./utils/formattedBudget";
 import FormCard from "./components/FormCard";
+import Modal from "./components/Modal";
 
 export default function App() {
 
@@ -156,12 +157,10 @@ export default function App() {
           })}
         </div>
       }
-      {modal && <div className={`fixed bottom-5 right-5 flex items-center gap-3 px-6 py-4 rounded-2xl shadow-2xl ${message === 'Importo non valido' || message === 'Descrizione non valida' ? 'bg-red-200' : 'bg-green-200'}`}>
-        <div>
-          <button className="cursor-pointer" onClick={() => setModal(false)}>✕</button>
-        </div>
-        <p className="text-slate-900">{message}</p>
-      </div>}
+      {modal && <Modal
+        message={message}
+        setModal={setModal}
+      />}
       {modalConfirmOperation && <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
         <div className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center">
           <div className="relative bg-white p-8 rounded-3xl shadow-2xl max-w-md">
