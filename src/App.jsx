@@ -4,6 +4,7 @@ import FormCard from "./components/FormCard";
 import Modal from "./components/Modal";
 import OperationCard from "./components/OperationCard";
 import ModalConfirmOperation from "./components/ModalConfirmOperation";
+import ModalConfirmAll from "./components/ModalConfirmAll";
 
 export default function App() {
 
@@ -141,19 +142,10 @@ export default function App() {
         setModalConfirmOperation={setModalConfirmOperation}
         confirmDelete={confirmDelete}
       />}
-      {modalConfirmAll && <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-        <div className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center">
-          <div className="relative bg-white p-8 rounded-3xl shadow-2xl max-w-md">
-            <div>
-              <h2 className="text-xl font-bold text-slate-900 mb-7">Confermi di voler eliminare tutte le operazioni?</h2>
-              <div className="flex justify-between">
-                <div><button className="bg-slate-900 text-white px-6 py-2 rounded-xl font-bold" onClick={() => setModalConfirmAll(false)}>Annulla</button></div>
-                <div><button className="bg-red-800 text-white px-6 py-2 rounded-xl font-bold" onClick={() => confirmDeleteAll()}>Conferma</button></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>}
+      {modalConfirmAll && <ModalConfirmAll
+        setModalConfirmAll={setModalConfirmAll}
+        confirmDeleteAll={confirmDeleteAll}
+      />}
     </div>
   )
 }
